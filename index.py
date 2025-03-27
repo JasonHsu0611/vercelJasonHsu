@@ -8,7 +8,7 @@ def index():
     homepage = "<h1>許森睿Python網頁(</h1>"
     homepage += "<a href=/mis>MIS</a><br>"
     homepage += "<a href=/today>顯示日期時間</a><br>"
-    homepage += "<a href=/welcome?nick=jason>傳送使用者暱稱</a><br>"
+    homepage += "<a href=/welcome?nick=jason&work=pu>傳送使用者暱稱</a><br>"
     homepage += "<a href=/account>網頁表單傳值</a><br>"
     homepage += "<a href=/about>森睿簡介網頁</a><br>"
     return homepage
@@ -32,7 +32,8 @@ def me():
 @app.route("/welcome", methods=["GET"])
 def welcome():
     user = request.values.get("nick")
-    return render_template("welcome.html", name=user)
+    w = request.values.get("work")
+    return render_template("welcome.html", name=user, work = w)
 
 @app.route("/account", methods=["GET", "POST"])
 def account():
